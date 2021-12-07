@@ -1,13 +1,21 @@
+<script>
+  export let title;
+  export let subtitle;
+  export let imageUrl;
+  export let description;
+  export let address;
+</script>
+
 <article class="meetup-item">
   <header>
-    <h1>Title</h1>
-    <h2>SubTitle</h2>
+    <h1>{title}</h1>
+    <h2>{subtitle}</h2>
   </header>
   <div class="image">
-    <img src="" alt="" />
+    <img src={imageUrl} alt={title} />
   </div>
   <div class="content">
-    <p>Content</p>
+    <p>{description}</p>
   </div>
   <footer>
     <button>Show Details</button>
