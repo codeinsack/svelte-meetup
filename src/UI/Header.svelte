@@ -19,6 +19,5 @@
   h1 {
     color: white;
     font-family: "Roboto Stab", serif;
-    margin: 0;
   }
 </style>
