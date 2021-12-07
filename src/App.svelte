@@ -1,9 +1,8 @@
 <script>
   import Header from "./UI/Header.svelte";
-  import MeetupItem from "./Meetups/MeetupItem.svelte";
   import MeetupGrid from "./Meetups/MeetupGrid.svelte";
 
-  const meetups = [
+  let meetups = [
     {
       id: "m1",
       title: "Coding Bootcamp",
@@ -23,7 +22,60 @@
       contact: "swim@test.com",
     },
   ];
+
+  let title = "";
+  let subtitle = "";
+  let contact = "";
+  let description = "";
+
+  const addMeetup = () => {
+    const newMeetup = {
+      id: Math.random().toString(),
+      title,
+      subtitle,
+      contact,
+      description,
+    };
+    meetups = [...meetups, newMeetup];
+  };
 </script>
 
 <Header />
-<MeetupGrid {meetups} />
+<main>
+  <div>
+    <form on:submit|preventDefault={addMeetup}>
+      <input
+        class="input-group"
+        bind:value={title}
+        type="text"
+        placeholder="Title"
+      />
+      <input
+        class="input-group"
+        bind:value={subtitle}
+        type="text"
+        placeholder="Subtitle"
+      />
+      <input
+        class="input-group"
+        bind:value={contact}
+        type="text"
+        placeholder="EMail"
+      />
+      <textarea
+        class="input-group"
+        bind:value={description}
+        rows="3"
+        placeholder="Description"
+      />
+      <button type="submit">Save</button>
+    </form>
+  </div>
+  <MeetupGrid {meetups} />
+</main>
+
+<style>
+  main {
+    margin-top: 100px;
+  }
+</style>
