@@ -19,6 +19,7 @@
   let subtitle = "";
   let contact = "";
   let description = "";
+  let showModal = false;
 
   const addMeetup = () => {
     const newMeetup = {
@@ -33,6 +34,10 @@
 
   const showDetails = (event) => {
     console.log("clicked", event);
+  };
+
+  const toggleModal = () => {
+    showModal = !showModal;
   };
 </script>
 
@@ -69,9 +74,12 @@
   </div>
   <MeetupGrid {meetups} on:show-details={showDetails} on:mark-favorite />
 </main>
-<Modal>
-  <h1>Hello!</h1>
-</Modal>
+<button on:click={toggleModal}>Toggle Modal</button>
+{#if showModal}
+  <Modal>
+    <h1>Hello!</h1>
+  </Modal>
+{/if}
 
 <style>
   main {
