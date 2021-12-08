@@ -1,4 +1,5 @@
 <script>
+  import { tick } from "svelte";
   import Header from "./UI/Header.svelte";
   import MeetupGrid from "./Meetups/MeetupGrid.svelte";
   import Modal from "./Modal.svelte";
@@ -20,6 +21,7 @@
   let contact = "";
   let description = "";
   let showModal = false;
+  let text = "This is dummy text...";
 
   const addMeetup = () => {
     const newMeetup = {
@@ -38,6 +40,26 @@
 
   const toggleModal = () => {
     showModal = !showModal;
+  };
+
+  const transform = (event) => {
+    if (event.which !== 9) {
+      return;
+    }
+    event.preventDefault();
+    const selectionStart = event.target.selectionStart;
+    const selectionEnd = event.target.selectionEnd;
+    const value = event.target.value;
+
+    text =
+      value.slice(0, selectionStart) +
+      value.slice(selectionStart, selectionEnd).toUpperCase() +
+      value.slice(selectionEnd);
+
+    tick().then(() => {
+      event.target.selectionStart = selectionStart;
+      event.target.selectionEnd = selectionEnd;
+    });
   };
 </script>
 
@@ -80,6 +102,7 @@
     <h1>Hello!</h1>
   </Modal>
 {/if}
+<textarea rows="5" value={text} on:keydown={transform} />
 
 <style>
   main {
