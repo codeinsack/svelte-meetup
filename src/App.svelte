@@ -1,6 +1,7 @@
 <script>
   import Header from "./UI/Header.svelte";
   import MeetupGrid from "./Meetups/MeetupGrid.svelte";
+  import Modal from "./Modal.svelte";
 
   let meetups = [
     {
@@ -11,15 +12,6 @@
       imageUrl: "https://picsum.photos/200/300",
       address: "27th Nerd Road, 32253 New York",
       contact: "code@test.com",
-    },
-    {
-      id: "m2",
-      title: "Swim Together",
-      subtitle: "Let's go swimming",
-      description: "We will simply swim",
-      imageUrl: "https://picsum.photos/200/300",
-      address: "27th Nerd Road, 32253 New York",
-      contact: "swim@test.com",
     },
   ];
 
@@ -77,6 +69,9 @@
   </div>
   <MeetupGrid {meetups} on:show-details={showDetails} on:mark-favorite />
 </main>
+<Modal>
+  <h1>Hello!</h1>
+</Modal>
 
 <style>
   main {
