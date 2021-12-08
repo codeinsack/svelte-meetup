@@ -38,6 +38,10 @@
     };
     meetups = [...meetups, newMeetup];
   };
+
+  const showDetails = (event) => {
+    console.log("clicked", event);
+  };
 </script>
 
 <Header />
@@ -71,7 +75,7 @@
       <button type="submit">Save</button>
     </form>
   </div>
-  <MeetupGrid {meetups} />
+  <MeetupGrid {meetups} on:show-details={showDetails} on:mark-favorite />
 </main>
 
 <style>

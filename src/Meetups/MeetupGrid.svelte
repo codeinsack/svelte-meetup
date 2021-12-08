@@ -2,6 +2,10 @@
   import MeetupItem from "./MeetupItem.svelte";
 
   export let meetups;
+
+  const addToFavorite = () => {
+    console.log("clicked");
+  };
 </script>
 
 <section class="meetups">
@@ -12,6 +16,8 @@
       imageUrl={meetup.imageUrl}
       description={meetup.description}
       address={meetup.address}
+      on:show-details
+      on:mark-favorite
     />
   {/each}
 </section>

@@ -1,9 +1,13 @@
 <script>
+  import { createEventDispatcher } from "svelte";
+
   export let title;
   export let subtitle;
   export let imageUrl;
   export let description;
   export let address;
+
+  const dispatch = createEventDispatcher();
 </script>
 
 <article class="meetup-item">
@@ -18,8 +22,10 @@
     <p>{description}</p>
   </div>
   <footer>
-    <button>Show Details</button>
-    <button>Favorite</button>
+    <button on:click={() => dispatch("show-details", { text: "Hello World!" })}>
+      Show Details
+    </button>
+    <button on:click={() => dispatch("mark-favorite")}>Favorite</button>
   </footer>
 </article>
 
